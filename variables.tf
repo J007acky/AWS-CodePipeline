@@ -1,5 +1,6 @@
 variable "subs_id" {
   description = "Subscription ID"
+  default = "71dd8aa2-d476-436b-bf75-61b8ae29cd69"
   type = string
 }
 variable "tenant_id" {
