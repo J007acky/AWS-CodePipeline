@@ -4,7 +4,7 @@ pipeline {
         terraform 'Terraform-Jenkins'
     }
 
-    // stages {
+     stages {
     //     stage('Check for Azure CLI') {
     //         steps{
     //             script {
