@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     echo 'Plan Stage'
-                    sh 'terraform plan'
+                    sh 'terraform plan -var "subs_id"=$AZURE_SUBSCRIPTION_ID'
                 }
             }
         }
