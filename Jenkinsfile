@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        terraform 'Terraform-Jenkins'
+    }
+
     stages {
         stage('terraform init') {
             steps {
