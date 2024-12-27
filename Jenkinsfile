@@ -4,14 +4,14 @@ pipeline {
         terraform 'Terraform-Jenkins'
     }
 
-    stages {
-        stage('Check for Azure CLI') {
-            steps{
-                script {
-                    sh 'command -v az > /dev/null 2>&1 && az --version || curl -sL https://aka.ms/InstallAzureCLIDeb | bash'
-                }
-            }
-        }
+    // stages {
+    //     stage('Check for Azure CLI') {
+    //         steps{
+    //             script {
+    //                 sh 'command -v az > /dev/null 2>&1 && az --version || curl -sL https://aka.ms/InstallAzureCLIDeb | bash'
+    //             }
+    //         }
+    //     }
         stage('terraform init') {
             steps {
                 script {
