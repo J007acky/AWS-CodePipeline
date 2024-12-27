@@ -25,7 +25,8 @@ pipeline {
                 script {
                     echo 'Plan Stage'
                     withCredentials([azureServicePrincipal('AZURE_CRED')]) {
-                    sh 'terraform plan -var "subs_id=$AZURE_SUBSCRIPTION_ID" -var "tenant_id=$AZURE_TENANT_ID" -var "client_id=$AZURE_CLIENT_ID" -var "client_secret=$AZURE_CLIENT_SECRET"'
+#                    sh 'terraform plan -var "subs_id=$AZURE_SUBSCRIPTION_ID" -var "tenant_id=$AZURE_TENANT_ID" -var "client_id=$AZURE_CLIENT_ID" -var "client_secret=$AZURE_CLIENT_SECRET"'
+                     sh 'terraform plan'
                     }
                 }
             }
