@@ -12,7 +12,7 @@ terraform {
 # Providers configuration details for the Azure Terraform provider
 provider "azurerm" {
     features {}
-    subscription_id = "71dd8aa2-d476-436b-bf75-61b8ae29cd69"
+    subscription_id = var.subs_id
 }
 
 # Resoure Group
