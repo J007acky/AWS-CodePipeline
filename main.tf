@@ -26,7 +26,7 @@
 
   # # Storage Account
    resource "azurerm_storage_account" "testStorageAccount" {
-     name                     = "teststorage123"
+     name                     = "rahulrautela123"
      resource_group_name      = azurerm_resource_group.RahulRG.name
      location                 = azurerm_resource_group.RahulRG.location
      account_tier             = "Standard"
@@ -46,7 +46,7 @@
 
    # Azure Function
    resource "azurerm_function_app" "example" {
-     name                       = "testazurefunctions123"
+     name                       = "rautelafunction123"
      location                   = azurerm_resource_group.RahulRG.location
      resource_group_name        = azurerm_resource_group.RahulRG.name
      app_service_plan_id        = azurerm_service_plan.testServicePlan.id
