@@ -52,4 +52,9 @@
      app_service_plan_id        = azurerm_service_plan.testServicePlan.id
      storage_account_name       = azurerm_storage_account.testStorageAccount.name
      storage_account_access_key = azurerm_storage_account.testStorageAccount.primary_access_key
+
+      app_settings = {
+    "WEBSITE_RUN_FROM_PACKAGE" = var.blob
+    }
+
    }
