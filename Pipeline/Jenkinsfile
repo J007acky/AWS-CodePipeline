@@ -8,7 +8,7 @@ pipeline {
         string(name: 'RESOURCE_ADDRESS', defaultValue: '', description: 'Resource address for import')
         string(name: 'RESOURCE_ID', defaultValue: '/subscriptions/8a228cff-023f-42af-818d-51a84a828d46/resourceGroups/first-test-resources', description: 'Resource ID for import')
         string(name: 'ACCESS_KEY_BACKEND', defaultValue: '', description: 'State Storage for Terraform Backend')
-        string(name: 'STORAGE_ACCOUNT_NAME', defaultValue: 'rahulrautela123', description: '')
+        string(name: 'STORAGE_ACCOUNT_NAME', defaultValue: 'statestoragetf', description: '')
         string(name: 'CONTAINER_NAME', defaultValue: 'test-terraform-container', description: '')
         string(name: 'CON_STR', defaultValue: 'DefaultEndpointsProtocol=https;AccountName=rahulrautela123;AccountKey=xI4p2SVURO+YuZcVg02RN7CA0aK9ps+yqMFb/L9VHCkzRqa9Pdsf5ACkhf+bY5E+b1o0JkHAJYaL+AStba/fLA==;EndpointSuffix=core.windows.net', description: 'Connection String')
     }
