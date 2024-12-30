@@ -26,14 +26,14 @@ pipeline {
                 }
             }
         }
-#         stage('terraform import') {
- #           steps {
-  #              script {
-   #                 echo 'import existing resources'
-    #                sh "terraform -chdir=IAC import azurerm_resource_group.RahulRG ${params.RESOURCE_ID}"
-     #           }
-      #      }
-       # }
+//         stage('terraform import') {
+//           steps {
+//              script {
+//                 echo 'import existing resources'
+//                sh "terraform -chdir=IAC import azurerm_resource_group.RahulRG ${params.RESOURCE_ID}"
+//           }
+//      }
+// }
         stage('terraform plan') {
             steps {
                 script {
