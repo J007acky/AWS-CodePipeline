@@ -50,7 +50,7 @@ pipeline {
                 script {
                     def uploadCommand = """
                     az storage blob upload \
-                        --connection-string ${params.CON_STR} \
+                        --connection-string '${params.CON_STR}' \
                         --account-name ${params.STORAGE_ACCOUNT_NAME} \
                         --container-name ${params.CONTAINER_NAME} \
                         --file function-code.zip \
