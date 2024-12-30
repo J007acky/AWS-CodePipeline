@@ -18,3 +18,7 @@ variable "client_secret" {
   default="bH18Q~9cOEq7OH1m3jxXHSOwg_PjSYn38IM9Saik"
   type = string
 }
+variable "blob_url" {
+description = "Blob link for Function Deployment"
+type = string
+}
