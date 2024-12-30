@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     echo 'Init Stage'
-                    sh 'terraform init -chdir=IAC'
+                    sh 'terraform -chdir=IAC init'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                     echo 'Plan Stage'
                     withCredentials([azureServicePrincipal('AZURE_CRED_PROD')]) {
 //                sh 'terraform plan --var "subs_id"=$AZURE_SUBSCRIPTION_ID --var "tenant_id"=$AZURE_TENANT_ID --var "client_id"=$AZURE_CLIENT_ID --var "client_secret"=$AZURE_CLIENT_SECRET'
-                  sh 'terraform plan -chdir=IAC -out=tfplan'
+                  sh 'terraform -chdir=IAC plan -out=tfplan'
                     }
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
                 script {
                     echo 'Apply Stage'
                     withCredentials([azureServicePrincipal('AZURE_CRED_PROD')]) {
-                        sh 'terraform apply -chdir=IAC -auto-approve'
+                        sh 'terraform -chdir=IAC apply -auto-approve'
                     }
                 }
             }
