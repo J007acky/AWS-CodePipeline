@@ -49,7 +49,7 @@
      name                       = "testazurefunctions123"
      location                   = azurerm_resource_group.RahulRG.location
      resource_group_name        = azurerm_resource_group.RahulRG.name
-     app_service_plan_id        = azurerm_app_service_plan.testServicePlan.id
+     service_plan_id        = azurerm_service_plan.testServicePlan.id
      storage_account_name       = azurerm_storage_account.testStorageAccount.name
      storage_account_access_key = azurerm_storage_account.testStorageAccount.primary_access_key
    }
