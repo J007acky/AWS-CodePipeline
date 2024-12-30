@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     echo 'Init Stage'
-                    sh "echo "yes" | terraform -chdir=IAC init -backend-config access_key=${params.ACCESS_KEY_BACKEND}"
+                    sh "echo 'yes' | terraform -chdir=IAC init -backend-config access_key=${params.ACCESS_KEY_BACKEND}"
                 }
             }
         }
