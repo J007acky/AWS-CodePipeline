@@ -43,7 +43,7 @@ pipeline {
                 sh 'zip -r function-code.zip ../Functions/.'
             }
         }
-
+    }
         stage('Upload to Azure Storage') {
             steps {
                 // Upload the zip file to Azure Storage
