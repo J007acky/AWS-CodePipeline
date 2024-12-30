@@ -35,6 +35,9 @@ pipeline {
             steps {
                 script {
                     echo 'Apply Stage'
+                    withCredentials([azureServicePrincipal('AZURE_CRED_PROD')]) {
+                        sh 'terraform apply'
+                    }
                 }
             }
         }
