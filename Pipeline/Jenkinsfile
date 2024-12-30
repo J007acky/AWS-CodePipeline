@@ -4,6 +4,11 @@ pipeline {
         terraform 'Terraform-Jenkins'
     }
 
+    parameters {
+        string(name: 'RESOURCE_ADDRESS', defaultValue: '', description: 'Resource address for import')
+        string(name: 'RESOURCE_ID', defaultValue: '/subscriptions/8a228cff-023f-42af-818d-51a84a828d46/resourceGroups/first-test-resources', description: 'Resource ID for import')
+    }
+    
      stages {
     //     stage('Check for Azure CLI') {
     //         steps{
@@ -17,6 +22,14 @@ pipeline {
                 script {
                     echo 'Init Stage'
                     sh 'terraform -chdir=IAC init'
+                }
+            }
+        }
+         stage('terraform import') {
+            steps {
+                script {
+                    echo 'import existing resources'
+                    sh 'terraform -chdir=IAC import azurerm_resource_group.RahulRG ${params.RESOURCE_ID}'
                 }
             }
         }
