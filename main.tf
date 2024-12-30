@@ -26,7 +26,7 @@
 
   # # Storage Account
    resource "azurerm_storage_account" "testStorageAccount" {
-     name                     = "testStorage"
+     name                     = "teststorage123"
      resource_group_name      = azurerm_resource_group.RahulRG.name
      location                 = azurerm_resource_group.RahulRG.location
      account_tier             = "Standard"
