@@ -50,7 +50,7 @@ pipeline {
                 script {
                     sh "az storage blob upload --connection-string '${params.CON_STR}' --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query 'url' -o tsv"
                     def uploadCommand = """
-                    az storage blob url \
+                    az storage blob generate-sas \
                         --connection-string '${params.CON_STR}' \
                         --container-name '${params.CONTAINER_NAME}' \
                         --name function-code.zip
