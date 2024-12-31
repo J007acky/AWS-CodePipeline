@@ -55,7 +55,8 @@ pipeline {
                         --connection-string '${params.CON_STR}' \
                         --container-name '${params.CONTAINER_NAME}' \
                         --name function-code.zip \
-                        --expiry '${DATE_END}'
+                        --expiry '${DATE_END}' \
+                        --full-uri
                     """
                     env.BLOB_URL = sh(script: uploadCommand, returnStdout: true).trim()
                     
