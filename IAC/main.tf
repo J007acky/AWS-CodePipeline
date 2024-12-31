@@ -57,4 +57,14 @@
     "WEBSITE_RUN_FROM_PACKAGE" = var.blob_url
     }
 
+  site_config {
+    cors {
+      allowed_origins = [ "*" ]
+      support_credentials = false
+    }
+    application_stack {
+      python_version = "3.12"
+    }
+  }
+
    }
