@@ -20,5 +20,6 @@ variable "client_secret" {
 }
 variable "blob_url" {
 description = "Blob link for Function Deployment"
+default=""
 type = string
 }
