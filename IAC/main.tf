@@ -54,7 +54,7 @@
      storage_account_access_key = azurerm_storage_account.testStorageAccount.primary_access_key
 
       app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = var.blob
+    "WEBSITE_RUN_FROM_PACKAGE" = var.blob_url
     }
 
    }
