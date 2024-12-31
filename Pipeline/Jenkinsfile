@@ -48,7 +48,7 @@ pipeline {
             steps {
                 // Upload the zip file to Azure Storage
                 script {
-                    sh 'az storage blob upload --connection-string '${params.CON_STR}' --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query "url" -o tsv'
+                    sh 'az storage blob upload --connection-string "${params.CON_STR}" --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query "url" -o tsv'
                     def uploadCommand = """
                     az storage blob url \
                         --container-string '${params.CON_STR}' \
