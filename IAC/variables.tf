@@ -20,6 +20,6 @@ variable "client_secret" {
 }
 variable "blob_url" {
 description = "Blob link for Function Deployment"
-default=""
+default="https://statestoragetf.blob.core.windows.net/test-terraform-container/function-code.zip"
 type = string
 }
