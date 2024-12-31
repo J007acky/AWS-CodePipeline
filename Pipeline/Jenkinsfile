@@ -78,7 +78,7 @@ pipeline {
                 script {
                     echo 'Apply Stage'
                     withCredentials([azureServicePrincipal('AZURE_CRED_PROD')]) {
-                        sh "terraform -chdir=IAC apply -var 'blob_url'='${BLOB_URL}' -out=tfplan -auto-approve"
+                        sh "terraform -chdir=IAC apply -var 'blob_url'='${BLOB_URL}' -auto-approve"
                     }
                 }
             }
