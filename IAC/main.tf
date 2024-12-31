@@ -45,18 +45,19 @@
 
 
    # Azure Function
-   resource "azurerm_function_app" "example" {
-     name                       = "rautelafunction123"
-     location                   = azurerm_resource_group.RahulRG.location
-     resource_group_name        = azurerm_resource_group.RahulRG.name
-     app_service_plan_id        = azurerm_service_plan.testServicePlan.id
-     storage_account_name       = azurerm_storage_account.testStorageAccount.name
-     storage_account_access_key = azurerm_storage_account.testStorageAccount.primary_access_key
+resource "azurerm_linux_function_app" "function_app_toll_violation_system"{
+  name                = var.function_app_container
+  resource_group_name = azurerm_resource_group.RahulRG.name
+  location            = azurerm_resource_group.RahulRG.location
+
+  storage_account_name       = azurerm_storage_account.testStorageAccount.name
+  storage_account_access_key = azurerm_storage_account.testStorageAccount.primary_access_key
+
+  service_plan_id            = azurerm_service_plan.testServicePlan.id
 
       app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = var.blob_url
     }
-
   site_config {
     cors {
       allowed_origins = [ "*" ]
@@ -67,4 +68,5 @@
     }
   }
 
-   }
+}
+
