@@ -46,7 +46,7 @@
 
    # Azure Function
 resource "azurerm_linux_function_app" "function_app_toll_violation_system"{
-  name                = var.function_app_container
+  name                = "rautelarahul124"
   resource_group_name = azurerm_resource_group.RahulRG.name
   location            = azurerm_resource_group.RahulRG.location
 
