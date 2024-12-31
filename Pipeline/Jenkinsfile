@@ -49,11 +49,13 @@ pipeline {
                 // Upload the zip file to Azure Storage
                 script {
                     sh "az storage blob upload --connection-string '${params.CON_STR}' --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query 'url' -o tsv"
+                    sh "end=`date -u -d '+1 month' '+%Y-%m-%dT%H:%MZ'"
                     def uploadCommand = """
                     az storage blob generate-sas \
                         --connection-string '${params.CON_STR}' \
                         --container-name '${params.CONTAINER_NAME}' \
-                        --name function-code.zip
+                        --name function-code.zip \
+                        --expiry $end
                     """
                     env.BLOB_URL = sh(script: uploadCommand, returnStdout: true).trim()
                     echo "Variable set to ${BLOB_URL}"
