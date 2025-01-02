@@ -58,7 +58,7 @@ pipeline {
                         --expiry '${DATE_END}' \
                         --full-uri
                     """
-                    env.BLOB_URL = sh(script: uploadCommand | sed 's/^\"//;s/\"$//'", returnStdout: true).trim()
+                    env.BLOB_URL = sh(script: "${uploadCommand} | sed 's/^\"//;s/\"$//'", returnStdout: true).trim()
                     
                     echo "Variable set to ${BLOB_URL}"
                 }
