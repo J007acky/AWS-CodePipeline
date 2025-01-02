@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     echo 'Restarting Function'
-                    az functionapp restart --name rautelarahul124 --resource-group first-test-resources
+                    sh 'az functionapp restart --name rautelarahul124 --resource-group first-test-resources'
                 }
             }
         }
