@@ -72,15 +72,15 @@ pipeline {
                     echo 'Plan Stage'
                     withCredentials([azureServicePrincipal(credentialsId:'AZURE_CRED_PROD',subscriptionIdVariable: 'AZURE_SUBSCRIPTION_ID',clientIdVariable: 'AZURE_CLIENT_ID',clientSecretVariable: 'AZURE_CLIENT_SECRET',tenantIdVariable: 'AZURE_TENANT_ID')]) {
                         echo "Cred : ${AZURE_SUBSCRIPTION_ID}"  
-                        sh '''
+                        sh """
                           terraform -chdir=IAC plan \
-                          -var "blob_url"=$BLOB_URL \
-                          -var "subs_id"="${AZURE_SUBSCRIPTION_ID}" \
-                          -var "tenant_id"="${AZURE_TENANT_ID}" \
-                          -var "client_id"="${AZURE_CLIENT_ID}" \
-                          -var "client_secret"="${AZURE_CLIENT_SECRET}" \
+                          -var "blob_url=$BLOB_URL" \
+                          -var "subs_id=$AZURE_SUBSCRIPTION_ID" \
+                          -var "tenant_id=$AZURE_TENANT_ID" \
+                          -var "client_id=$AZURE_CLIENT_ID" \
+                          -var "client_secret=$AZURE_CLIENT_SECRET" \
                         -out=tfplan
-                        '''
+                        """ 
                     }
                 }
             }
