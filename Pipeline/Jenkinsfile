@@ -56,6 +56,7 @@ pipeline {
                         --container-name '${params.CONTAINER_NAME}' \
                         --name function-code.zip \
                         --expiry '${DATE_END}' \
+                        --permissions acdeimrtwxy
                         --full-uri
                     """
                     env.BLOB_URL = sh(script:uploadCommand, returnStdout: true).trim().replaceAll('^"|"$', '')
