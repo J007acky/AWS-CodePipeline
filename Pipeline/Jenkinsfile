@@ -71,7 +71,8 @@ pipeline {
                 script {
                     echo 'Plan Stage'
                     withCredentials([azureServicePrincipal(credentialsId:'AZURE_CRED_PROD',subscriptionIdVariable: 'AZURE_SUBSCRIPTION_ID',clientIdVariable: 'AZURE_CLIENT_ID',clientSecretVariable: 'AZURE_CLIENT_SECRET',tenantIdVariable: 'AZURE_TENANT_ID')]) {
-                          sh '''
+                        echo "Cred : ${AZURE_SUBSCRIPTION_ID}"  
+                        sh '''
                           terraform -chdir=IAC plan \
                           -var "blob_url=$BLOB_URL" \
                           -var "subs_id=${AZURE_SUBSCRIPTION_ID}" \
