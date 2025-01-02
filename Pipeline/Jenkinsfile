@@ -69,7 +69,7 @@ pipeline {
             steps {
                 script {
                     echo 'Plan Stage'
-                    sh "$BLOB_URI = ${BLOB_URL}"
+                    sh "BLOB_URI=${BLOB_URL}"
                     echo "URL=$BLOB_URI"
                     withCredentials([azureServicePrincipal('AZURE_CRED_PROD')]) {
 //                sh 'terraform plan --var "subs_id"=$AZURE_SUBSCRIPTION_ID --var "tenant_id"=$AZURE_TENANT_ID --var "client_id"=$AZURE_CLIENT_ID --var "client_secret"=$AZURE_CLIENT_SECRET'
