@@ -9,6 +9,8 @@ pipeline {
         string(name: 'STORAGE_ACCOUNT_NAME', defaultValue: 'statestoragetf', description: '')
         string(name: 'CONTAINER_NAME', defaultValue: 'test-terraform-container', description: '')
         string(name: 'CON_STR', defaultValue: 'DefaultEndpointsProtocol=https;AccountName=statestoragetf;AccountKey=TgiUprX44G1FDdRwhKoX0HBCrfZ9ByeOqIqSAvjL2S4MPzcv/QP0+ZnX15erlDgHo3uxlhznwBzQ+AStm4Fz7w==;EndpointSuffix=core.windows.net', description: 'Connection String')
+        string(name: 'FUNC_NAME', defaultValue: 'rautelarahul124', description: 'Name of the functions')
+        string(name: 'RES_GRP_NAME', defaultValue: 'first-test-resources', description: 'Name of the Resource that contains your Function')
     }
     stages {
         stage('terraform init') {
@@ -84,7 +86,7 @@ pipeline {
             steps {
                 script {
                     echo 'Restarting Function'
-                    sh 'az functionapp restart --name rautelarahul124 --resource-group first-test-resources'
+                    sh "az functionapp restart --name ${params.FUNC_NAME} --resource-group ${params.RES_GRP_NAME}"
                 }
             }
         }
