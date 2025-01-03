@@ -18,7 +18,7 @@ pipeline {
                 script {
                     echo 'Init Stage'
                     withCredentials([string(credentialsId: 'BACKEND_ACCESS_KEY', variable: 'ACCESS_KEY_BACKEND')]) {
-                    sh 'echo "yes" | terraform -chdir=IAC init -backend-config access_key=${ACCESS_KEY_BACKEND}'
+                    sh 'echo "yes" | terraform -chdir=IAC init -backend-config access_key=${ACCESS_KEY_BACKEND} -reconfigure'
                     }
                 }
             }
