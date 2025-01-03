@@ -18,7 +18,7 @@ pipeline {
                 script {
                     echo 'Init Stage'
                     withCredentials([string(credentialsId: 'BACKEND_ACCESS_KEY', variable: 'ACCESS_KEY_BACKEND')]) {
-                    sh "echo 'yes' | terraform -chdir=IAC init -backend-config access_key=${ACCESS_KEY_BACKEND}"
+                    sh 'echo "yes" | terraform -chdir=IAC init -backend-config access_key=${ACCESS_KEY_BACKEND}'
                     }
                 }
             }
@@ -34,18 +34,18 @@ pipeline {
                 echo 'Uploading Function code to storage account'
                 script {
                     withCredentials([string(credentialsId: 'CONNECTION_STRING', variable: 'CON_STR')]) {
-                    sh "az storage blob upload --connection-string ${CON_STR} --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query 'url' -o tsv"
+                    sh 'az storage blob upload --connection-string ${CON_STR} --account-name ${params.STORAGE_ACCOUNT_NAME} --container-name ${params.CONTAINER_NAME} --file function-code.zip --name function-code.zip --overwrite --query "url" -o tsv'
                     }
                     env.DATE_END = sh(script: "date -u -d '+1 month' '+%Y-%m-%dT%H:%MZ'", returnStdout: true).trim()
-                    def uploadCommand = """
+                    def uploadCommand = '''
                     az storage blob generate-sas \
-                        --connection-string '${params.CON_STR}' \
+                        --connection-string '${CON_STR}' \
                         --container-name '${params.CONTAINER_NAME}' \
                         --name function-code.zip \
                         --expiry '${DATE_END}' \
                         --permissions acdeimrtwxy \
                         --full-uri
-                    """
+                    '''
                     env.BLOB_URL = sh(script:uploadCommand, returnStdout: true).trim().replaceAll('^"|"$', '')
                 }
             }
