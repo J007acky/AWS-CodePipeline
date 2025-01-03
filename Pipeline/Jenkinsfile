@@ -86,7 +86,9 @@ pipeline {
             steps {
                 script {
                     echo 'Restarting Function'
-                    sh "az functionapp restart --name ${params.FUNC_NAME} --resource-group ${params.RES_GRP_NAME}"
+                    withCredentials([azureServicePrincipal('AZURE_CRED')]) {
+                    sh "az functionapp restart --name ${params.FUNC_NAME} --resource-group ${params.RES_GRP_NAME} --subscription $AZURE_SUBSCRIPTION_ID"
+                    }
                 }
             }
         }
